@@ -1596,14 +1596,14 @@ html.mob.land .stages-grid.stages-grid6{grid-template-columns:1fr 1fr}
   <header>
     <div class="brand nav-left">
       <button class="icon-btn" id="btn-home" onclick="AudioFX.playClick(); showSlide(0)" title="Kembali ke Halaman Awal">🏠 <span>Home</span></button>
-      <button class="icon-btn" id="btn-alur" onclick="AudioFX.playClick(); showSlide(1)" title="Kembali ke Alur Produksi Furnitur">🧭 <span class="hl">Alur Produksi</span><span class="m-only">Alur</span></button>
+      <button class="icon-btn" id="btn-alur" onclick="AudioFX.playClick(); showSlide(1)" title="Kembali ke Alur Produksi Furnitur">🧭 <span>Alur Produksi</span></button>
     </div>
     <div class="header-actions">
       <span class="scene-indicator" id="scene-ind">Slide 1/7</span>
       
       <!-- Menu Khusus Tantangan Interaktif -->
       <button class="icon-btn btn-challenge-hub" id="btn-toggle-challenge" onclick="toggleChallengeMode()" title="Buka Arena Tantangan & Kuis Interaktif">
-        🎯 <span class="hl">Arena Tantangan Interaktif</span><span class="m-only">Arena</span>
+        🎯 <span class="hl">Arena Tantangan Interaktif</span><span class="m-only">Tantangan Interaktif</span>
       </button>
 
       <button class="icon-btn" id="btn-music" onclick="toggleBGM()" title="Putar / Jeda Musik Latar">
@@ -3146,7 +3146,7 @@ function showSlide(idx, playTransition = true) {
   { const tc = toolCtx(), bn = document.getElementById('btn-next'), bp = document.getElementById('btn-prev');
     if (tc) { const i = activeToolIndex[tc.key], last = i >= tc.tools.length - 1;
       bn.innerHTML = last ? (curSlide + 1 < TOTAL_SLIDES - 1 ? 'Tahap<span class="dl"> Berikutnya</span> ▶' : 'Penutup ▶') : '<span class="dl">Alat </span>Berikutnya ▶';
-      bp.innerHTML = i > 0 ? '◀ <span class="dl">Alat </span>Sebelumnya' : '◀ Alur<span class="dl"> Produksi</span>'; bp.classList.remove('g');
+      bp.innerHTML = i > 0 ? '◀ <span class="dl">Alat </span>Sebelumnya' : '◀ Alur Produksi'; bp.classList.remove('g');
     } else { bn.innerHTML = 'Next ▶'; } }
   document.getElementById('btn-next').disabled = (curSlide === TOTAL_SLIDES - 1);
   document.getElementById('btn-next').style.visibility = (curSlide === 0 ? 'hidden' : 'visible');
@@ -6066,8 +6066,10 @@ function openChallengeHub(tabIdx = 1) {
   view.className = 'in';
 
   if (tabIdx === 3 && !GAME_ITEMS.length) pickGameItems();
+  setTimeout(() => { const t = document.querySelector('.c-tab-btn.active'); if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'center' }); }, 30);
   document.documentElement.classList.remove('on-tool');
   document.documentElement.classList.add('on-hub');
+  document.documentElement.classList.remove('on-cover');
   view.innerHTML = `
     <div class="challenge-hub-view">
       <div class="challenge-nav-bar">
@@ -7576,17 +7578,44 @@ html.mob.port .cv3-P{height:100dvh!important}
 html.on-tool #btn-alur{display:flex}
 #btn-home span,#btn-alur span{font-weight:700}
 html.mob .dl{display:none}
+html.mob header .icon-btn{padding:7px 9px!important;font-size:12.5px!important;gap:4px;white-space:nowrap}
+html.mob header .header-actions,html.mob header .nav-left{gap:6px!important}
+html.mob.port header{flex-wrap:nowrap!important;padding-left:6px!important;padding-right:6px!important;gap:4px!important}
+html.mob.port header .header-actions,html.mob.port header .nav-left{gap:4px!important;flex-wrap:nowrap!important;min-width:0}
+html.mob.port header .icon-btn{padding:6px 6px!important;font-size:clamp(9.5px,2.95vw,12.5px)!important;gap:2px!important;letter-spacing:-.15px}
+html.mob.port header #btn-music{padding:6px 5px!important}
 /* revisi V.19c */
 #btn-home,#btn-alur,.btn-challenge-hub{background:linear-gradient(135deg,#e59d2c,#d97706)!important;color:#170c02!important;border:0!important;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.35)}
 #btn-home:hover,#btn-alur:hover,.btn-challenge-hub:hover{background:linear-gradient(135deg,#f5b244,#e59d2c)!important}
 html.on-hub #btn-alur{display:flex}
 #scene-ind{display:none!important}
-#dots-box,.dots{visibility:hidden!important}
+#dots-box,.dots{display:none!important}
+html.mob footer{justify-content:space-between!important}
+html.mob footer .btn{white-space:nowrap}
 .challenge-nav-bar{flex-direction:column;align-items:center;justify-content:center}
 .challenge-nav-bar > div:first-child{justify-content:center;width:100%}
 .challenge-nav-bar > div:first-child span{font-size:15px!important;letter-spacing:.5px}
 .challenge-tabs{justify-content:center!important}
 #cv4Pill{display:none!important}
+/* HP: menu tantangan bergeser (scroll), tiap tab berbingkai; isi tantangan rapi & rata tengah */
+html.mob .challenge-tabs{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto!important;width:100%;gap:6px;padding:2px 2px 6px;scroll-snap-type:x proximity;scrollbar-width:none}
+html.mob .challenge-tabs::-webkit-scrollbar{display:none}
+html.mob .c-tab-btn{flex:none!important;white-space:nowrap!important;font-size:12px!important;padding:7px 12px!important;border:1px solid rgba(242,165,31,.55)!important;border-radius:9px!important;background:rgba(255,255,255,.04);scroll-snap-align:start}
+html.mob .c-tab-btn.active{border-color:#f59e0b!important;background:linear-gradient(135deg,#f5b244,#e59d2c)!important;color:#170c02!important;font-weight:800}
+html.mob .challenge-nav-bar{padding:8px!important}
+html.mob .challenge-nav-bar > div:first-child span{font-size:14px!important}
+html.mob .challenge-content-box{zoom:.9;padding:12px 12px 16px!important}
+html.mob .challenge-content-box div:has(> div > .quiz-badge),html.mob .challenge-content-box .cx-head,html.mob .challenge-content-box .dnd-game-header{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;gap:8px!important}
+html.mob .challenge-content-box div:has(> .quiz-badge){display:flex;flex-direction:column;align-items:center;text-align:center}
+html.mob .challenge-content-box .quiz-badge{margin:0 auto 4px;font-size:10.5px!important;line-height:1.3;padding:4px 12px;text-align:center}
+html.mob .challenge-content-box h1,html.mob .challenge-content-box h2,html.mob .cx-h2,html.mob .quiz-title{font-size:14.5px!important;line-height:1.4!important;text-align:center!important;margin:6px 4px 2px!important;padding:0 4px}
+html.mob .challenge-content-box h3{font-size:14px!important;text-align:center}
+html.mob .cx-right{white-space:normal;text-align:center}
+html.mob .cx-qtext,html.mob .cx-intro p{font-size:13px}
+html.mob .cx-opt,html.mob .cx-clue{font-size:12.5px}
+html.mob .cx-big{font-size:38px}
+html.mob .cx-in{font-size:16px;width:140px}
+html.mob .cx-wrap{gap:12px}
 .closing-badge{font-size:64px;line-height:1;filter:drop-shadow(0 0 18px rgba(242,165,31,.6))}
 /* tab tantangan 10 buah */
 .challenge-tabs{flex-wrap:wrap;justify-content:flex-end}
