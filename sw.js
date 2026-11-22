@@ -1,6 +1,6 @@
 /* Service worker Tool Master: menyimpan aplikasi di perangkat agar bisa dibuka tanpa internet.
    Naikkan angka VERSI setiap kali index.html diperbarui, supaya pengguna mendapat versi terbaru. */
-const VERSI = 'tool-master-v18b';
+const VERSI = 'tool-master-v18d';
 const FILES = ['./', './index.html', './manifest.webmanifest', './favicon.png', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
