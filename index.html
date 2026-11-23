@@ -2028,10 +2028,12 @@ html.mob:not(.on-cover) #view>*:not(.cl3){margin-left:env(safe-area-inset-left);
 html.mob .cl3-in{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
 html.mob.land .ar-intro{transform:scale(.86);transform-origin:top center;margin-bottom:-40px}
 </style>
-<style id="hbcss">/* ===== PERCOBAAN HP: tanpa header & footer, menu garis tiga ===== */
+<style id="hbcss">html{--sat:env(safe-area-inset-top,0px);--hbTop:max(10px,calc(var(--sat) + 6px))}
+html.mob #view{padding-top:0!important}
+/* ===== PERCOBAAN HP: tanpa header & footer, menu garis tiga ===== */
 #hb-btn,#hb-dr{display:none}
 html.mob:not(.on-cover) header,html.mob:not(.on-cover) footer{display:none!important}
-html.mob:not(.on-cover) #hb-btn{display:flex;position:absolute;z-index:40;left:max(10px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));width:34px;height:34px;border-radius:10px;border:1.5px solid rgba(226,178,110,.75);background:rgba(30,17,8,.82);backdrop-filter:blur(4px);flex-direction:column;align-items:center;justify-content:center;gap:3.5px;cursor:pointer;padding:0;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+html.mob:not(.on-cover) #hb-btn{display:flex;position:absolute;z-index:40;left:max(10px,env(safe-area-inset-left));top:var(--hbTop);width:34px;height:34px;border-radius:10px;border:1.5px solid rgba(226,178,110,.75);background:rgba(30,17,8,.82);backdrop-filter:blur(4px);flex-direction:column;align-items:center;justify-content:center;gap:3.5px;cursor:pointer;padding:0;box-shadow:0 4px 12px rgba(0,0,0,.4)}
 #hb-btn i{display:block;width:15px;height:2px;border-radius:2px;background:#ffcc4d;transition:transform .2s,opacity .2s}
 html.hb-open #hb-btn i:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
 html.hb-open #hb-btn i:nth-child(2){opacity:0}
@@ -2054,23 +2056,23 @@ html.hb-open .hb-pn{transform:none}
 .hb-sw i{position:absolute;left:3px;top:3px;width:15px;height:15px;border-radius:50%;background:#fff;transition:left .2s}
 .hb-sw.on{background:#22a356}.hb-sw.on i{left:20px}
 /* ruang untuk tombol garis tiga */
-html.mob .pa-hero{padding-top:64px!important}
-html.mob:not(.on-cover) .pd{padding-top:60px!important}
-html.mob.land:not(.on-cover) .pd{padding-top:10px!important;padding-left:62px!important}
-html.mob .challenge-hub-view,html.mob.on-hub #view>div:first-child{padding-top:58px!important}
-html.mob.land .challenge-hub-view,html.mob.land.on-hub #view>div:first-child{padding-top:10px!important;padding-left:60px!important}
+html.mob .pa-hero{padding-top:var(--hbPad,calc(var(--hbTop) + 46px))!important}
+html.mob:not(.on-cover) .pd{padding-top:var(--hbPad,calc(var(--hbTop) + 44px))!important}
+html.mob.land:not(.on-cover) .pd{padding-top:var(--hbPad,calc(var(--hbTop) + 44px))!important;padding-left:62px!important}
+html.mob .challenge-hub-view,html.mob.on-hub #view>div:first-child{padding-top:var(--hbPad,calc(var(--hbTop) + 42px))!important}
+html.mob.land .challenge-hub-view,html.mob.land.on-hub #view>div:first-child{padding-top:var(--hbPad,calc(var(--hbTop) + 42px))!important;padding-left:60px!important}
 html.mob.land .pa-hero{padding-left:66px!important}
 html.mob #view{height:100%!important}
 .hb-card7 .pa-img{width:40%!important;right:2%!important}
-html.mob.land .pa-hero{padding-top:18px!important}
+html.mob.land .pa-hero{padding-top:var(--hbPad,calc(var(--hbTop) + 46px))!important}
 
 html.mob #view{position:relative!important}
-html.mob .pa-hero{padding-top:54px!important}
-html.mob:not(.on-cover) .pd{padding-top:52px!important}
-html.mob .challenge-hub-view,html.mob.on-hub #view>div:first-child{padding-top:50px!important}
-html.mob.land .pa-hero{padding-top:18px!important;padding-left:58px!important}
-html.mob.land:not(.on-cover) .pd{padding-top:10px!important;padding-left:54px!important}
-html.mob.land .challenge-hub-view,html.mob.land.on-hub #view>div:first-child{padding-top:10px!important;padding-left:54px!important}
+html.mob .pa-hero{padding-top:var(--hbPad,calc(var(--hbTop) + 46px))!important}
+html.mob:not(.on-cover) .pd{padding-top:var(--hbPad,calc(var(--hbTop) + 44px))!important}
+html.mob .challenge-hub-view,html.mob.on-hub #view>div:first-child{padding-top:var(--hbPad,calc(var(--hbTop) + 42px))!important}
+html.mob.land .pa-hero{padding-top:var(--hbPad,calc(var(--hbTop) + 46px))!important;padding-left:58px!important}
+html.mob.land:not(.on-cover) .pd{padding-top:var(--hbPad,calc(var(--hbTop) + 44px))!important;padding-left:54px!important}
+html.mob.land .challenge-hub-view,html.mob.land.on-hub #view>div:first-child{padding-top:var(--hbPad,calc(var(--hbTop) + 42px))!important;padding-left:54px!important}
 .hb-hint{display:flex;align-items:center;justify-content:center;gap:8px;font-size:10.5px;color:#cdb593;margin-top:2px}
 .hb-hint span{color:#ffcc4d;font-size:14px;font-weight:800}
 html.hb-open #hb-btn{position:fixed}
@@ -2089,7 +2091,7 @@ html.mob .pd-center,html.mob .pd-right{backface-visibility:hidden}
 
 /* ===== kolom pencarian HP ===== */
 #hb-search{display:none}
-html.mob:not(.on-cover) #hb-search{display:block;position:absolute;z-index:41;top:max(10px,env(safe-area-inset-top));left:calc(max(10px,env(safe-area-inset-left)) + 42px);right:max(10px,env(safe-area-inset-right))}
+html.mob:not(.on-cover) #hb-search{display:block;position:absolute;z-index:41;top:var(--hbTop);left:calc(max(10px,env(safe-area-inset-left)) + 42px);right:max(10px,env(safe-area-inset-right))}
 .hb-sf{display:flex;align-items:center;gap:7px;height:34px;padding:0 6px 0 11px;box-sizing:border-box;border-radius:10px;border:1.5px solid rgba(226,178,110,.55);background:rgba(30,17,8,.82);backdrop-filter:blur(4px);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:border-color .2s}
 .hb-sf:focus-within{border-color:#ffcc4d}
 .hb-sf svg{width:15px;height:15px;flex:none;color:#ffcc4d}
@@ -2111,9 +2113,9 @@ html.mob:not(.on-cover) #hb-search{display:block;position:absolute;z-index:41;to
 .hb-res small{display:block;font-size:10.5px;color:#cdb593;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hb-none{padding:12px;font-size:12px;color:#cdb593;text-align:center}
 /* landscape: bar atas, konten di bawahnya */
-html.mob.land .pa-hero{padding-top:54px!important;padding-left:16px!important}
-html.mob.land:not(.on-cover) .pd{padding-top:52px!important;padding-left:10px!important}
-html.mob.land .challenge-hub-view,html.mob.land.on-hub #view>div:first-child{padding-top:50px!important;padding-left:10px!important}
+html.mob.land .pa-hero{padding-top:var(--hbPad,calc(var(--hbTop) + 46px))!important;padding-left:16px!important}
+html.mob.land:not(.on-cover) .pd{padding-top:var(--hbPad,calc(var(--hbTop) + 44px))!important;padding-left:10px!important}
+html.mob.land .challenge-hub-view,html.mob.land.on-hub #view>div:first-child{padding-top:var(--hbPad,calc(var(--hbTop) + 42px))!important;padding-left:10px!important}
 html.mob.land:not(.on-cover) #hb-search{right:auto;width:min(420px,60vw)}
 </style>
 </head>
@@ -8775,7 +8777,10 @@ clr.addEventListener('click', () => { inp.value = ''; search(); inp.focus(); });
 document.addEventListener('pointerdown', e => { if (!srch.contains(e.target)) srch.classList.remove('open'); });
 
 const view = document.getElementById('view');
-const place = () => { if (btn.parentElement !== view) view.prepend(btn); if (srch.parentElement !== view) btn.after(srch); };
+const fitPad = () => { if (!isM() || !srch.offsetParent) return; const b = Math.max(srch.offsetTop + srch.querySelector('.hb-sf').offsetHeight, btn.offsetTop + btn.offsetHeight);
+  H.style.setProperty('--hbPad', (b + 10) + 'px'); };
+const place = () => { if (btn.parentElement !== view) view.prepend(btn); if (srch.parentElement !== view) btn.after(srch); requestAnimationFrame(fitPad); };
+window.addEventListener('resize', () => setTimeout(fitPad, 60)); window.addEventListener('orientationchange', () => setTimeout(fitPad, 300));
 new MutationObserver(place).observe(view, { childList: true }); place();
 /* geser kiri/kanan: hanya keterangan alat yang bergeser; daftar alat & garis tiga diam */
 let sx = 0, sy = 0, st = 0, ok = false, dir = 0, els = [], busy = false, lastDx = 0, raf = 0;
